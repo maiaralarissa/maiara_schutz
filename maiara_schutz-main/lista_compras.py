@@ -60,7 +60,7 @@ class ListaComprasApp:
         # Botão Deletar
         self.btn_deletar = tk.Button(
             frame_botoes,
-            text=" Deletar",
+            text="🗑️​Deletar",
             font=("Arial", 11, "bold"),
             bg="#e74c3c", fg="white",
             width=12, cursor="hand2",
@@ -70,7 +70,7 @@ class ListaComprasApp:
         # Botão de limpar campos
              self.btn_deletar = tk.Button(
             frame_botoes,
-            text=" Limpar",
+            text="🧹Limpar",
             font=("Arial", 11, "bold"),
             bg="#e74c3c", fg="white",
             width=12, cursor="hand2",
@@ -86,7 +86,6 @@ class ListaComprasApp:
         # Scrollbar
         scrollbar = tk.Scrollbar(frame_lista)
         scrollbar.pack(side="rigth", fill+"y")
-")
 
         # Treeview
         colunas = ("descricao", "quantidade", "preco", "subtotal")
@@ -97,4 +96,35 @@ class ListaComprasApp:
             yscrollcommand=scrollbar.set,
             height=10
         )
-        scrollbar.config(command)
+        scrollbar.config(command=self.tree.yview)
+
+        # Configurar colunas
+        self.tree.heading("descricao", text="Descrição")
+        self.tree.heading("quantidade", text="Qtd")
+        self.tree.heading("preço", text="Preço Unit. (R$)")
+        self.tree.heading("subtotal", text="Subtotal (R$)")
+
+        self.tree.heading("descricao", width=250, anchor="w")
+        self.tree.heading("quantidade", width=60, anchor="center")
+        self.tree.heading("preço", width=120, anchor="e")
+        self.tree.heading("subtotal", width=120, anchor="e")
+
+        self.tree.pack(fill="both", expand=True)
+
+        # Evento de seleção
+        self.tree.bind("<<TreeviewSelect>>", self.on_select)
+
+        # ========== TOTAL =========
+        frame_total = tk.Frame(self.root, bg="#f0f4f8")
+        frame_tota.pack(pady=10, padx=20, fill="x")
+
+       # ========== STATUS BAR ==========
+        self.lbl_total = tk.Label(
+            self.root,
+            text="Pronto. Selecione um item para editar ou deletar.",
+            font=("Arial", 9),
+            bg="#d5dbdb",
+            fg="#2c3e50",
+            anchor="w"
+        )
+        self.lbl_status.pack(fill="x", side="bottom")
