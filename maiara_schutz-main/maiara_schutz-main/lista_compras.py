@@ -163,3 +163,27 @@ class ListaComprasApp:
         anchor="W"
     )
     self.lbl_status.pack(fill="X", side="botton")
+
+    # Estilo Treeview
+    style = ttk.Style()
+    style.theme_use("clam")
+    style.configure("Treeview", font=("Arial", 10), rowheight=25)
+    style.configure("Treeview.Heading", font=("Arial", 11, "bold"),background="#3498db", foreground="white")
+    style.map("Treeview", background=[("selected", "#aed6f1")])
+
+def on select(self, event):
+    """Quando um item da lista é selecionado, preenche os campos"""
+    selecao = self.tree.slection()
+    if selecao:
+        item_id = selecao[0]
+        valores  = self tree.item(item_id, "values")
+
+        self.txt_descricao.delete(0, tk.END)
+        self.txt_descricao.insert(0, valores[0])
+
+        self.txt_quantidade.delete(0, tk.END)
+        self.txt_quantidade.insert(0, valores[1])
+
+        self.txt_preço.delete(0, tk.END)
+        self.txt_preço.insert(0, valores[2]. replace("R$", "").replace(""))
+        
