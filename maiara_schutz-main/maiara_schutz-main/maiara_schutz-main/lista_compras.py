@@ -240,5 +240,5 @@ def inserir(self):
     self.salvar_no_arquivo()
     self.atualizar_lista()
     self.limpar_campos()
-    self.lbl_status.config(text=f"Item '{dados['descricao']}' inserido com sucesso)
-    messagebox.showinfo("Sucesso", )
+    self.lbl_status.config(text=f"Item '{dados['descricao']}' inserido com sucesso!")
+    messagebox.showinfo("Sucesso", f)
