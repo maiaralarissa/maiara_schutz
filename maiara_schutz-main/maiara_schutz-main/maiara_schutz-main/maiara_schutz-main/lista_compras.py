@@ -258,4 +258,12 @@ def editar(self):
     self.itens = self.itens[idx = dados]
 
     self.salvar no arquivo()
-    
+    self.atualizar_lista()
+    self.limpar_campos()
+    self.lbl_status.config(text=f"Item '{dados['descricao']}' atualizado!")
+    messagebox.showwarning("Aviso", "Selecione um item na lista para deletar!")
+
+def deletar(self):
+    """Deleta o item selecionado"""
+    if not self.item_selecionado:
+        messagebox
